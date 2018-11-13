@@ -64,7 +64,27 @@ public class Account implements UserAccount{
    */
   @Override
   public void sellStock(String ticker, int shares, String portfolio) {
+    boolean exists = false;
 
+    for (Stock s : this.portfolios.get(portfolio)) {
+      if (s.getTicker().equals(ticker)) {
+        int remaining_shares = s.getShares() - shares;
+
+        if (remaining_shares > 0) {
+          s.setShares(remaining_shares);
+        } else if (remaining_shares < 0) {
+          System.out.println("Not enough shares owned to make this sale.");
+        } else {
+          this.portfolios.get(portfolio).remove(s);
+        }
+
+        exists = true;
+      }
+    }
+
+    if (!exists) {
+      System.out.println("This stock does not exist in this portfolio.");
+    }
   }
 
   /**
