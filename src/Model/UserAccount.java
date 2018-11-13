@@ -18,14 +18,14 @@ public interface UserAccount {
    * If the stock does exist in the portfolio, then it will add the shares to the stock within the
    * portfolio.
    */
-  void buyStock(String ticker, int shares);
+  void buyStock(String ticker, int shares, String portfolio);
 
   /**
    * Sells a particular stock from a specified portfolio at the users command. The stock MUST exist
    * in the portfolio to be able to sell it. The user can only sell, at maximum, the total number
    * of shares owned.
    */
-  void sellStock(String ticker, int shares);
+  void sellStock(String ticker, int shares, String portfolio);
 
   /**
    * Displays the total current information within the users account.
