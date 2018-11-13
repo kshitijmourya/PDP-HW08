@@ -6,7 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class APIData {
-  public static void main(String []args) {
+  public static String main(String... args) {
     //the API key needed to use this web service.
     //Please get your own free API key here: https://www.alphavantage.co/
     //Please look at documentation here: https://www.alphavantage.co/documentation/
@@ -60,5 +60,6 @@ public class APIData {
     }
     System.out.println("Return value: ");
     System.out.println(output.toString());
+    return output.toString();
   }
 }
