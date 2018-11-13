@@ -1,17 +1,18 @@
 package Model;
 
-public class Stock implements IStock{
+public class Stock {
   private String ticker;
   private int shares;
   private double cost;
 
-  Stock(String tickerSymbol, String date, String type, int shares) {
-    this.ticker = tickerSymbol;
+  Stock(String companyName, String date, String type, int shares) {
     this.shares = shares;
 
     APIData stock_data = new APIData();
-    String code = stock_data.searchCode(tickerSymbol);
+    String code = stock_data.searchCode(companyName);
     double price = stock_data.getPrices(code, date, type);
+
+    this.ticker = companyName;
 
     if (this.cost > 0) {
       this.cost = this.cost + price * shares;

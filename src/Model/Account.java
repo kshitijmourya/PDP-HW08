@@ -102,7 +102,6 @@ public class Account implements UserAccount {
     return null;
   }
 
-
   public static AccountModelBuilder getBuilder() {
     return new AccountModelBuilder();
   }

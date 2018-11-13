@@ -1,14 +1,10 @@
 package Controller;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import Model.Account;
 import Model.UserAccount;
-import Model.IStock;
-import Model.Stock;
 
 
 public class AppController implements IAppController {
@@ -74,7 +70,7 @@ public class AppController implements IAppController {
 
 
       try {
-        model.buyStock(stockName, shares, portfolioName);
+        model.buyStock(stockName, "11-8-2017", "open", shares, portfolioName);
       } catch (IllegalArgumentException e) {
         output(e.getMessage());
       }
