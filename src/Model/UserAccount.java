@@ -18,7 +18,7 @@ public interface UserAccount {
    * If the stock does exist in the portfolio, then it will add the shares to the stock within the
    * portfolio.
    */
-  void buyStock(String ticker, int shares, String portfolio);
+  void buyStock(String ticker, String date, String type, int shares, String portfolio);
 
   /**
    * Sells a particular stock from a specified portfolio at the users command. The stock MUST exist

@@ -33,10 +33,10 @@ public class Account implements UserAccount {
    * portfolio, then it will add the shares to the stock within the portfolio.
    */
   @Override
-  public void buyStock(String ticker, int shares, String portfolio) {
+  public void buyStock(String ticker, String date, String type, int shares, String portfolio) {
     boolean exists = false;
 
-    Stock stock_bought = new Stock(ticker, shares);
+    Stock stock_bought = new Stock(ticker, date, type, shares);
     Stock stock_owned;
 
     for (Stock s : this.portfolios.get(portfolio)) {

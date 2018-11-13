@@ -1,27 +1,23 @@
 package Model;
 
 public class Stock implements IStock{
-  private String open;
-  private String timestamp;
-  private String high;
-  private String low;
   private String ticker;
   private int shares;
   private double cost;
 
-  Stock(String tickerSymbol, int shares) {
-    String stock_data = APIData.main(tickerSymbol);
-
-    String[] temp_holder = stock_data.split(",");
-
+  Stock(String tickerSymbol, String date, String type, int shares) {
     this.ticker = tickerSymbol;
-    this.timestamp = temp_holder[0];
-    this.open = temp_holder[0];
-    this.high = temp_holder[0];
-    this.low = temp_holder[0];
-
     this.shares = shares;
-    this.cost = cost; // one of the open | high | low
+
+    APIData stock_data = new APIData();
+    String code = stock_data.searchCode(tickerSymbol);
+    double price = stock_data.getPrices(code, date, type);
+
+    if (this.cost > 0) {
+      this.cost = this.cost + price * shares;
+    } else {
+      this.cost = price * shares;
+    }
   }
 
   String getTicker() {
