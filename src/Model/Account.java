@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class Account implements UserAccount{
+public class Account implements UserAccount {
   Map<String, LinkedList<Stock>> portfolios;
 
-  public Account() {
+  private Account() {
     this.portfolios = new HashMap<String, LinkedList<Stock>>();
   }
 
@@ -101,4 +101,20 @@ public class Account implements UserAccount{
   public String viewAccount() {
     return null;
   }
+
+
+  public static AccountModelBuilder getBuilder() {
+    return new AccountModelBuilder();
+  }
+
+  public static class AccountModelBuilder {
+    private AccountModelBuilder() {
+
+    }
+
+    public UserAccount build() {
+      return new Account();
+    }
+  }
+
 }
