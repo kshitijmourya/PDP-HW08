@@ -9,17 +9,18 @@ import Model.UserAccount;
 
 
 /**
- *
+ * This class represents the controller for How to Invest for Dummies Application.
  */
 public class AppController implements IAppController {
   private final Readable in;
   private final Appendable out;
 
   /**
+   * This method scans for user inputs, one key stroke at a time.
    *
-   * @param scan
-   * @return
-   * @throws IllegalStateException
+   * @param scan key stroke input.
+   * @return String of key stroke inputs from the user.
+   * @throws IllegalStateException if anything else is pressed in by the user.
    */
   private String input(Scanner scan) throws IllegalStateException {
     String string = "";
@@ -32,8 +33,8 @@ public class AppController implements IAppController {
   }
 
   /**
-   *
-   * @param st
+   * Builds the output message that is supplied to the user.
+   * @param st string that is being supplied to the method, one at a time to build
    * @throws IllegalStateException
    */
   private void output(String st) throws IllegalStateException {
@@ -67,10 +68,31 @@ public class AppController implements IAppController {
     UserAccount model = new Account();
 
     Scanner sc = new Scanner(this.in);
-    output("Please Enter the date for trading\n" +
-            "YYYY-MM-DD \n");
+    output("Please Enter the date for trading\n"
+            + "YYYY-MM-DD \n\n"
+            + "Please do not enter dates of holidays as the market is CLOSED on holidays.\n");
     String date = input(sc);
+    Scanner date_check = new Scanner(date).useDelimiter("-");
 
+    int count = 0;
+    while (date_check.hasNext()) {
+      String check = date_check.next();
+      if (count > 2) {
+        throw new IllegalArgumentException("Invalid Date.");
+      } else if (count == 0 && check.length() != 4) {
+        throw new IllegalArgumentException("Invalid Date.");
+      } else if (count == 1 && (check.length() != 2
+              || Integer.valueOf(check) < 1
+              || Integer.valueOf(check) > 12)) {
+        throw new IllegalArgumentException("Invalid Date.");
+      } else if (count == 2 && (check.length() != 2
+              || Integer.valueOf(check) < 1
+              || Integer.valueOf(check) > 31)) {
+        throw new IllegalArgumentException("Invalid Date.");
+      }
+
+      count++;
+    }
 
     //java.time.LocalTime.now().getHour();
     //Time could be compared with above method which gives current time.
