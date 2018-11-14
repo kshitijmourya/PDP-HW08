@@ -11,25 +11,12 @@ import static org.junit.Assert.assertNotEquals;
 public class AccountTest {
   Account testTrade;
 
+  /**
+   * Initialization.
+   */
   @Before
   public void setUp() {
     testTrade = new Account();
-  }
-
-  @Test
-  public void testAddPortfolio() {
-    testTrade.addPortfolio("Technology");
-    String early_ports = testTrade.viewAccount();
-    testTrade.addPortfolio("Retail");
-    String all_ports = testTrade.viewAccount();
-    testTrade.removePortfolio("Retail");
-
-    assertNotEquals(early_ports, all_ports);
-    assertEquals(early_ports, testTrade.viewAccount());
-  }
-
-  @Test
-  public void testAddStock() {
     testTrade.addPortfolio("Technology");
     testTrade.buyStock("apple", "2018-11-08", "open", 10, "Technology");
     testTrade.buyStock("amd", "2018-11-08", "open", 10, "Technology");
@@ -37,8 +24,18 @@ public class AccountTest {
     testTrade.buyStock("microsoft", "2018-11-08", "open", 10, "Technology");
     testTrade.buyStock("intel", "2018-11-08", "open", 10, "Technology");
 
-    testTrade.viewAccount();
-    assertEquals("1", "1");
+  }
+
+  @Test
+  public void testAddPortfolio() {
+    testTrade.addPortfolio("Technology2");
+    String early_ports = testTrade.viewAccount();
+    testTrade.addPortfolio("Retail");
+    String all_ports = testTrade.viewAccount();
+    testTrade.removePortfolio("Retail");
+
+    assertNotEquals(early_ports, all_ports);
+    assertEquals(early_ports, testTrade.viewAccount());
   }
 
   @Test(expected = IllegalArgumentException.class)
