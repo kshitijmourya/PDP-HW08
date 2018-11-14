@@ -76,7 +76,7 @@ public class AppController implements IAppController {
     //Time could be compared with above method which gives current time.
     //But it would be inefficient for development and testing purposes.
 
-    output("Please Enter current hour in 24 hours format. It should be in between 8-14 to trade");
+    output("\nPlease Enter current hour in 24 hours format. It should be in between 8-14 to trade");
     String time = input(sc);
     int t = Integer.parseInt(time);
     if (t < 8 || t > 14) {

@@ -3,7 +3,7 @@ package Model;
 public class MockModel implements UserAccount {
   private StringBuilder log;
 
-  private MockModel(StringBuilder log) {
+  public MockModel(StringBuilder log) {
     this.log = log;
   }
 
