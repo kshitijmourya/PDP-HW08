@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /**
  * This class represents a single stock interest, to be stores in the users portfolio.
@@ -13,9 +13,9 @@ class Stock {
    * company in shares, cost of stocks purchased, and the ticker symbol for the company.
    *
    * @param companyName or ticker symbol that can be used to look the company up.
-   * @param date that the stock is going to be bought.
-   * @param type of price the shares will be bought at (i.e. open, close, high, low)
-   * @param shares to be boughtfor the company.
+   * @param date        that the stock is going to be bought.
+   * @param type        of price the shares will be bought at (i.e. open, close, high, low)
+   * @param shares      to be boughtfor the company.
    */
   Stock(String companyName, String date, String type, int shares) {
     this.shares = shares;
@@ -87,8 +87,8 @@ class Stock {
   public String toString() {
     String stock_information =
             "Ticker Symbol: " + this.ticker
-            + "\n" + "Total Shares Owned: " + this.shares
-            + "\n" + "Total Running Cost of Stock: " + this.cost + "\n";
+                    + "\n" + "Total Shares Owned: " + this.shares
+                    + "\n" + "Total Running Cost of Stock: " + this.cost + "\n";
 
     return stock_information;
   }

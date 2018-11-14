@@ -1,11 +1,11 @@
-package Controller;
+package controller;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import Model.Account;
-import Model.UserAccount;
+import model.Account;
+import model.UserAccount;
 
 
 /**
@@ -47,10 +47,11 @@ public class AppController implements IAppController {
   }
 
   /**
+   * Constructor for the controller. It takes in Readable object and appendable object. If both of
+   * them are null, it throws illegal argument exception.
    *
-   * @param rd
-   * @param ap
-   * @throws IllegalArgumentException
+   * @param rd Readable object
+   * @param ap Appendable object
    */
   public AppController(Readable rd, Appendable ap) throws IllegalArgumentException {
     if (rd == null || ap == null) {
@@ -61,13 +62,10 @@ public class AppController implements IAppController {
   }
 
   /**
-   * It asks user for date, time, then it asks user for various inputs which directs the input
-   * to the appropriate model methods. Shows the output reulsts to the user.
-   *
-   * @throws IllegalArgumentException
-   * @throws IllegalStateException
+   * It asks user for date, time, then it asks user for various inputs which directs the input to
+   * the appropriate model methods. Shows the output reulsts to the user.
    */
-  public void go() throws IllegalArgumentException, IllegalStateException {
+  public void runApp() throws IllegalArgumentException, IllegalStateException {
     UserAccount model = new Account();
 
     Scanner sc = new Scanner(this.in);
@@ -101,7 +99,8 @@ public class AppController implements IAppController {
     //Time could be compared with above method which gives current time.
     //But it would be inefficient for development and testing purposes.
 
-    output("\nPlease Enter current hour in 24 hours format. It should be in between 8-14 to trade");
+    output("\nPlease Enter current hour in 24 hours format. " +
+            "It should be in between 8-14 to trade\n");
     String time = input(sc);
     int t = Integer.parseInt(time);
     if (t < 8 || t > 14) {
@@ -169,7 +168,7 @@ public class AppController implements IAppController {
         case "Q":
           output("Exiting the program");
           System.exit(0);
-
+          break;
 
         default:
           output("Please Enter valid response");

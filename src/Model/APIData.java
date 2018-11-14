@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -68,16 +68,16 @@ class APIData {
 
   /**
    * Gets the prices of a specified stock. It returns 4 different prices for the day and the amount
-   * of shares moved by the company. The 4 different prices are: open, close, high, and low.
-   * The user will be able select which price type to buy the stock at in the future for training
+   * of shares moved by the company. The 4 different prices are: open, close, high, and low. The
+   * user will be able select which price type to buy the stock at in the future for training
    * purposes. However, the current version limits the user to buying stock at the opening price.
    *
    * @param tickrCode for the company to buy stocks of.
-   * @param date that the stocks will be bought.
-   * @param type of price the user will give to select the price point to buy at.
+   * @param date      that the stocks will be bought.
+   * @param type      of price the user will give to select the price point to buy at.
    * @return price of a single share of this stock.
-   * @throws IllegalArgumentException if the url query does not work or if the ticker symbol did
-   *                                  not return any data
+   * @throws IllegalArgumentException if the url query does not work or if the ticker symbol did not
+   *                                  return any data
    */
   Double getPrices(String tickrCode, String date, String type) throws IllegalArgumentException {
     try {
