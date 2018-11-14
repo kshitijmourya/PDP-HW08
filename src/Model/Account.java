@@ -45,7 +45,6 @@ public class Account implements UserAccount {
 
         int new_shares = stock_bought.getShares() + stock_owned.getShares();
         double running_cost = s.getCost() + stock_bought.getCost();
-
         s.setShares(new_shares);
         s.setCost(running_cost);
         exists = true;
@@ -99,8 +98,17 @@ public class Account implements UserAccount {
    */
   @Override
   public String viewAccount() {
+    String account_information;
+    this.portfolios.forEach((k, v) -> {
+      for (Stock s : v) {
+        s.toString();
+      }
+    });
     return null;
   }
+
+
+
 
   public static AccountModelBuilder getBuilder() {
     return new AccountModelBuilder();
