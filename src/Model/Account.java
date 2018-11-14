@@ -45,7 +45,6 @@ public class Account implements UserAccount {
 
         int new_shares = stock_bought.getShares() + stock_owned.getShares();
         double running_cost = s.getCost() + stock_bought.getCost();
-
         s.setShares(new_shares);
         s.setCost(running_cost);
         exists = true;
@@ -53,7 +52,7 @@ public class Account implements UserAccount {
     }
 
     if (!exists) {
-      this.portfolios.get(portfolios).add(stock_bought);
+      this.portfolios.get(portfolio).add(stock_bought);
     }
   }
 

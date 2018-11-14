@@ -104,11 +104,9 @@ public class APIData {
       callAPIToGetPrices(tickrCode);
     }
     Map<String, Map<String, Double>> res = this.prices.get(tickrCode);
-    System.out.println(res);
     Double result = 0.0;
     try {
-      //result =
-      System.out.println(res.get(date));
+      result = res.get(date).get(type);
     } catch (Exception e) {
       e.printStackTrace();
       throw new IllegalArgumentException("No Info");
