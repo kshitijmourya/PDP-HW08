@@ -20,8 +20,8 @@ public class APIData {
     this.prices = new HashMap<>();
   }
 
+  public String searchCode(String companyName) {
 
-  public void GetTickrCode(String companyName) {
     try {
       url = new URL("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&"
               + "keywords=" + companyName
@@ -49,23 +49,18 @@ public class APIData {
     String[] value = output.toString().split("\n");
     String[] row = value[1].split(",");
     this.nameToCode.put(companyName, row[0]);
-  }
 
-  public String searchCode(String companyName) {
-    if (!this.nameToCode.containsKey(companyName)) {
-      GetTickrCode(companyName);
-    }
     return this.nameToCode.get(companyName);
   }
 
 
-  public void GetPrices(String code) {
+  public Double getPrices(String tickrCode, String date, String type) throws IllegalArgumentException {
     try {
       url = new URL("https://www.alphavantage"
               + ".co/query?function=TIME_SERIES_DAILY"
               + "&outputsize=full"
               + "&symbol"
-              + "=" + code + "&apikey=" + apiKey + "&datatype=csv");
+              + "=" + tickrCode + "&apikey=" + apiKey + "&datatype=csv");
     } catch (MalformedURLException e) {
       throw new RuntimeException("the alphavantage API has either changed or "
               + "no longer works");
@@ -81,37 +76,31 @@ public class APIData {
         output.append((char) b);
       }
     } catch (IOException e) {
-      throw new IllegalArgumentException("No price data found for " + code);
+      throw new IllegalArgumentException("No price data found for " + tickrCode);
     }
 
 
     Map<String, Map<String, Double>> res = new HashMap<String, Map<String, Double>>();
     String[] value = output.toString().split("\n");
-    String[] type = {"open", "high", "low", "close", "volume"};
+    String[] category = {"open", "high", "low", "close", "volume"};
 
     for (int i = 1; i < value.length; i++) {
       String[] row = value[i].split(",");
       res.put(row[0], new HashMap<String, Double>());
       for (int j = 1; j < row.length; j++) {
-        res.get(row[0]).put(type[j - 1], Double.parseDouble(row[j]));
+        res.get(row[0]).put(category[j - 1], Double.parseDouble(row[j]));
       }
     }
-    this.prices.put(code, res);
-  }
+    this.prices.put(tickrCode, res);
 
 
-  public Double getPrices(String tickrCode, String date, String type) throws IllegalArgumentException {
-    if (!prices.containsKey(tickrCode)) {
-      GetPrices(tickrCode);
-    }
-
-    Map<String, Map<String, Double>> res = this.prices.get(tickrCode);
+    Map<String, Map<String, Double>> resu = this.prices.get(tickrCode);
     Double result = 0.0;
     try {
       //System.out.println(res);
       //result=0.0;
       //System.out.println(date);
-      result = res.get(date).get(type);
+      result = resu.get(date).get(type);
     } catch (Exception e) {
       e.printStackTrace();
       throw new IllegalArgumentException("No Info");
