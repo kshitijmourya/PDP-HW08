@@ -45,11 +45,16 @@ public class AppController implements IAppController {
     }
 
     Scanner sc = new Scanner(this.in);
+    output("Please Enter the date for trading\n" +
+            "YYYY-MM-DD \n");
+    String date = input(sc);
+
+
     while (true) {
-    output("You can input: 1 for creating portfolio," +
-            " 2 for buying stocks, 3 for viewing account..etc etc... " +
-            "Enter Q for quiting\n");
-    String command = input(sc);
+      output("You can input: 1 for creating portfolio," +
+              " 2 for buying stocks, 3 for viewing account..etc etc... " +
+              "Enter Q for quiting\n");
+      String command = input(sc);
 
       if (command.equals("1")) {
         output("Please input the portfolio's name.\n");
@@ -72,11 +77,12 @@ public class AppController implements IAppController {
 
 
         try {
-          model.buyStock(stockName, "11-8-2017", "open", shares, portfolioName);
+          model.buyStock(stockName, date, "open", shares, portfolioName);
         } catch (IllegalArgumentException e) {
           output(e.getMessage());
         }
         output("Bought Stock successfully\n");
+
       }
 
       if (command.equals("3")) {

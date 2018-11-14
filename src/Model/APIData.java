@@ -96,6 +96,7 @@ public class APIData {
         res.get(row[0]).put(type[j - 1], Double.parseDouble(row[j]));
       }
     }
+
     this.prices.put(code, res);
   }
 
@@ -105,13 +106,12 @@ public class APIData {
       callAPIToGetPrices(tickrCode);
     }
     Map<String, Map<String, Double>> res = this.prices.get(tickrCode);
+
     Double result = 0.0;
     try {
-      result = res
-              .get(date)
-              .get(type);
+
+      result = res.get(date).get(type);
     } catch (Exception e) {
-      e.printStackTrace();
       throw new IllegalArgumentException("No Info");
 
     }

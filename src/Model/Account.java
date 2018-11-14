@@ -53,7 +53,7 @@ public class Account implements UserAccount {
     }
 
     if (!exists) {
-      this.portfolios.get(portfolios).add(stock_bought);
+      this.portfolios.get(portfolio).add(stock_bought);
     }
   }
 
