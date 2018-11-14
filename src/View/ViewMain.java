@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import Controller.AppController;
 import Model.Account;
 
-public class viewMain {
+public class ViewMain {
 
   public static void main(String[] args) {
 
