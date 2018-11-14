@@ -7,7 +7,7 @@ import java.util.Map;
 public class Account implements UserAccount {
   Map<String, LinkedList<Stock>> portfolios;
 
-  private Account() {
+  public Account() {
     this.portfolios = new HashMap<String, LinkedList<Stock>>();
   }
 
@@ -99,8 +99,17 @@ public class Account implements UserAccount {
    */
   @Override
   public String viewAccount() {
+    String account_information;
+    this.portfolios.forEach((k, v) -> {
+      for (Stock s : v) {
+        s.toString();
+      }
+    });
     return null;
   }
+
+
+
 
   public static AccountModelBuilder getBuilder() {
     return new AccountModelBuilder();

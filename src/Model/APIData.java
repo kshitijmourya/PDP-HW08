@@ -76,7 +76,6 @@ public class APIData {
     try {
       in = url.openStream();
       int b;
-
       while ((b = in.read()) != -1) {
         output.append((char) b);
       }
@@ -105,12 +104,13 @@ public class APIData {
       callAPIToGetPrices(tickrCode);
     }
     Map<String, Map<String, Double>> res = this.prices.get(tickrCode);
+    System.out.println(res);
     Double result = 0.0;
     try {
-      result = res
-              .get(date)
-              .get(type);
+      //result =
+      System.out.println(res.get(date));
     } catch (Exception e) {
+      e.printStackTrace();
       throw new IllegalArgumentException("No Info");
     }
     return result;

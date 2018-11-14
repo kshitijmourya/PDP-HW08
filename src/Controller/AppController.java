@@ -70,7 +70,7 @@ public class AppController implements IAppController {
 
 
       try {
-        model.buyStock(stockName, "11-8-2017", "open", shares, portfolioName);
+        model.buyStock(stockName, "2017-11-8", "open", shares, portfolioName);
       } catch (IllegalArgumentException e) {
         output(e.getMessage());
       }

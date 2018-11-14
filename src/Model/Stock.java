@@ -10,9 +10,10 @@ public class Stock {
 
     APIData stock_data = new APIData();
     String code = stock_data.searchCode(companyName);
+    System.out.println(code);
     double price = stock_data.getPrices(code, date, type);
 
-    this.ticker = companyName;
+    this.ticker = code;
 
     if (this.cost > 0) {
       this.cost = this.cost + price * shares;
@@ -39,5 +40,14 @@ public class Stock {
 
   void setCost(double cost) {
     this.cost = cost;
+  }
+
+  @Override
+  public String toString() {
+    String stock_information = this.ticker
+            + "\n" + this.shares
+            + "\n" + this.cost;
+
+    return stock_information;
   }
 }
