@@ -111,7 +111,9 @@ public class APIData {
               .get(date)
               .get(type);
     } catch (Exception e) {
+      e.printStackTrace();
       throw new IllegalArgumentException("No Info");
+
     }
     return result;
   }

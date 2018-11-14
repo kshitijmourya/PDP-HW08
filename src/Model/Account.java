@@ -7,7 +7,7 @@ import java.util.Map;
 public class Account implements UserAccount {
   Map<String, LinkedList<Stock>> portfolios;
 
-  private Account() {
+  public Account() {
     this.portfolios = new HashMap<String, LinkedList<Stock>>();
   }
 
