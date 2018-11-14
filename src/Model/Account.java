@@ -109,21 +109,4 @@ public class Account implements UserAccount {
     return null;
   }
 
-
-
-
-  public static AccountModelBuilder getBuilder() {
-    return new AccountModelBuilder();
-  }
-
-  public static class AccountModelBuilder {
-    private AccountModelBuilder() {
-
-    }
-
-    public UserAccount build() {
-      return new Account();
-    }
-  }
-
 }

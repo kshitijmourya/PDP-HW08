@@ -12,7 +12,7 @@ public class viewMain {
 
     //System.out.println(java.time.LocalTime.now().getHour());
     new AppController(new InputStreamReader(System.in), System.out).go();
-            //.go(Account.getBuilder().build());
+
 
 
   }

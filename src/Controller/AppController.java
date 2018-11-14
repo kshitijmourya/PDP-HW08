@@ -13,13 +13,13 @@ public class AppController implements IAppController {
   private final Appendable out;
 
   private String input(Scanner scan) throws IllegalStateException {
-    String st = "";
+    String string = "";
     try {
-      st = scan.next();
+      string = scan.next();
     } catch (NoSuchElementException e) {
       throw new IllegalStateException();
     }
-    return st;
+    return string;
   }
 
   private void output(String st) throws IllegalStateException {
@@ -40,10 +40,6 @@ public class AppController implements IAppController {
 
   public void go() throws IllegalArgumentException, IllegalStateException {
     UserAccount model = new Account();
-    if (model == null) {
-      throw new IllegalArgumentException("Model cannot be null");
-    }
-
 
     Scanner sc = new Scanner(this.in);
     output("Please Enter the date for trading\n" +
@@ -65,53 +61,69 @@ public class AppController implements IAppController {
     }
 
     while (true) {
-      output("You can input: 1 for creating portfolio," +
-              " 2 for buying stocks, 3 for viewing account..etc etc... " +
+
+      output("You can input:\n " +
+              "1 for creating portfolio,\n" +
+              " 2 for buying stocks\n," +
+              " 3 for viewing account\n" +
               "Enter Q for quiting\n");
       String command = input(sc);
 
-      if (command.equals("1")) {
-        output("Please input the portfolio's name.\n");
-        String portfolioName = input(sc);
-        try {
-          model.addPortfolio(portfolioName);
-        } catch (IllegalArgumentException e) {
-          output(e.getMessage());
-        }
-        output("Created a portfolio successfully.\n");
-      }
+      switch (command) {
 
-      if (command.equals("2")) {
-        output("Please input the Stocks's name.\n");
-        String stockName = input(sc);
-        output("Please input the number of shares.\n");
-        int shares = Integer.parseInt(input(sc));
-        output("Please input the Portfolio's name.\n");
-        String portfolioName = input(sc);
+        case "1":
+          output("Please input the portfolio's name.\n");
+          String portfolioName = input(sc);
+          try {
+            model.addPortfolio(portfolioName);
+            output("Created a portfolio successfully.\n");
+          } catch (IllegalArgumentException e) {
+            output(e.getMessage());
+          }
+          break;
 
 
-        try {
-          model.buyStock(stockName, date, "open", shares, portfolioName);
-          output("Bought Stock successfully\n");
-        } catch (IllegalArgumentException e) {
-          output(e.getMessage());
-        } catch (NullPointerException e) {
-          output("Create a portfolio first\n");
-        }
-      }
+        case "2":
+          output("Please input the Stocks's name.\n");
+          String stockName = input(sc);
+          output("Please input the number of shares.\n");
+          int shares = Integer.parseInt(input(sc));
+          output("Please input the Portfolio's name.\n");
+          String portfolio = input(sc);
 
-      if (command.equals("3")) {
-        output("Showing Account Details\n" +
-                "Please Enter: 1) For all portfolios \n" +
-                "2) for specific stock \n" +
-                "3) for specific stock in specific portfolio\n");
-        String option = input(sc);
-        try {
-          model.viewAccount(option);
-        } catch (IllegalArgumentException e) {
-          output(e.getMessage());
-        }
-        output("Showing Account Details\n");
+          try {
+            model.buyStock(stockName, date, "open", shares, portfolio);
+            output("Bought Stock successfully\n");
+          } catch (IllegalArgumentException e) {
+            output(e.getMessage());
+          } catch (NullPointerException e) {
+            output("Create a portfolio first\n");
+          }
+          break;
+
+        case "3":
+          output("Showing Account Details\n" +
+                  "Please Enter: 1) For all portfolios \n" +
+                  "2) for specific stock \n" +
+                  "3) for specific stock in specific portfolio\n");
+          String option = input(sc);
+          try {
+            model.viewAccount(option);
+          } catch (IllegalArgumentException e) {
+            output(e.getMessage());
+          }
+          output("Showing Account Details\n");
+          break;
+
+        case "q":
+        case "Q":
+          output("Exiting the program");
+          System.exit(0);
+
+
+        default:
+          output("Please Enter valid response");
+          break;
       }
 
     }

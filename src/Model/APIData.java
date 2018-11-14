@@ -21,7 +21,7 @@ public class APIData {
   }
 
 
-  private void callAPIToGetCode(String companyName) {
+  public void GetTickrCode(String companyName) {
     try {
       url = new URL("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&"
               + "keywords=" + companyName
@@ -43,7 +43,7 @@ public class APIData {
         output.append((char) b);
       }
     } catch (IOException e) {
-      throw new IllegalArgumentException("No code data found for " + companyName);
+      throw new IllegalArgumentException("No Tickr found for " + companyName);
     }
 
     String[] value = output.toString().split("\n");
@@ -53,13 +53,13 @@ public class APIData {
 
   public String searchCode(String companyName) {
     if (!this.nameToCode.containsKey(companyName)) {
-      callAPIToGetCode(companyName);
+      GetTickrCode(companyName);
     }
     return this.nameToCode.get(companyName);
   }
 
 
-  private void callAPIToGetPrices(String code) {
+  public void GetPrices(String code) {
     try {
       url = new URL("https://www.alphavantage"
               + ".co/query?function=TIME_SERIES_DAILY"
@@ -102,7 +102,7 @@ public class APIData {
 
   public Double getPrices(String tickrCode, String date, String type) throws IllegalArgumentException {
     if (!prices.containsKey(tickrCode)) {
-      callAPIToGetPrices(tickrCode);
+      GetPrices(tickrCode);
     }
 
     Map<String, Map<String, Double>> res = this.prices.get(tickrCode);
