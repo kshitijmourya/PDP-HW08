@@ -21,6 +21,6 @@ public class AccountTest {
   @Test
   public void testAddStock() {
     testTrade.addPortfolio("Technology");
-    testTrade.buyStock("apple", "2018-11-8", "open", 10, "Technology");
+    testTrade.buyStock("apple", "2018-11-08", "open", 10, "Technology");
   }
 }

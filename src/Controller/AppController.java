@@ -86,9 +86,14 @@ public class AppController implements IAppController {
       }
 
       if (command.equals("3")) {
-        output("Showing Account Details\n");
+        output("Showing Account Details\n" +
+                "Please Enter: 1) For all portfolios \n" +
+                "2) for specific stock \n" +
+                "3) for specific stock in specific portfolio\n");
+        String option= input(sc);
         try {
-          model.viewAccount();
+
+          model.viewAccount(option);
         } catch (IllegalArgumentException e) {
           output(e.getMessage());
         }

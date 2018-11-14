@@ -10,7 +10,8 @@ import java.util.Map;
 public class APIData {
   private Map<String, String> nameToCode;
   private Map<String, Map<String, Map<String, Double>>> prices;
-  private String apiKey = "SSO4MPHRUSM6YMEB";
+//  private String apiKey = "SSO4MPHRUSM6YMEB";
+  private String apiKey="UISBJFEXNUUOZ3II";
   private URL url = null;
 
 
@@ -103,14 +104,17 @@ public class APIData {
     if (!prices.containsKey(tickrCode)) {
       callAPIToGetPrices(tickrCode);
     }
+
     Map<String, Map<String, Double>> res = this.prices.get(tickrCode);
     Double result = 0.0;
     try {
+      System.out.println(res);
+      //result=0.0;
+      System.out.println(date);
       result = res.get(date).get(type);
     } catch (Exception e) {
       e.printStackTrace();
       throw new IllegalArgumentException("No Info");
-
     }
     return result;
   }

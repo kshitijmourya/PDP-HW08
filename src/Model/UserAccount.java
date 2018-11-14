@@ -36,5 +36,5 @@ public interface UserAccount {
    *
    * @return String paragraph of user account information.
    */
-  String viewAccount();
+  String viewAccount(String option);
 }

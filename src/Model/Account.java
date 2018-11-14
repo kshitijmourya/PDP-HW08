@@ -97,7 +97,7 @@ public class Account implements UserAccount {
    * @return String paragraph of user account information.
    */
   @Override
-  public String viewAccount() {
+  public String viewAccount(String option) {
     String account_information;
     this.portfolios.forEach((k, v) -> {
       for (Stock s : v) {
