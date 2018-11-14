@@ -44,11 +44,25 @@ public class AppController implements IAppController {
       throw new IllegalArgumentException("Model cannot be null");
     }
 
+
     Scanner sc = new Scanner(this.in);
     output("Please Enter the date for trading\n" +
             "YYYY-MM-DD \n");
     String date = input(sc);
 
+
+    //java.time.LocalTime.now().getHour();
+    //Time could be compared with above method which gives current time.
+    //But it would be inefficient for development and testing purposes.
+
+    output("Please Enter current hour in 24 hours format. It should be in between 8-14 to trade");
+    String time = input(sc);
+    int t = Integer.parseInt(time);
+    if (t < 8 || t > 14) {
+      output("Stock market is closed");
+      throw new IllegalArgumentException("Stock Market is closed");
+
+    }
 
     while (true) {
       output("You can input: 1 for creating portfolio," +
@@ -78,11 +92,12 @@ public class AppController implements IAppController {
 
         try {
           model.buyStock(stockName, date, "open", shares, portfolioName);
+          output("Bought Stock successfully\n");
         } catch (IllegalArgumentException e) {
           output(e.getMessage());
+        } catch (NullPointerException e) {
+          output("Create a portfolio first\n");
         }
-        output("Bought Stock successfully\n");
-
       }
 
       if (command.equals("3")) {
@@ -90,9 +105,8 @@ public class AppController implements IAppController {
                 "Please Enter: 1) For all portfolios \n" +
                 "2) for specific stock \n" +
                 "3) for specific stock in specific portfolio\n");
-        String option= input(sc);
+        String option = input(sc);
         try {
-
           model.viewAccount(option);
         } catch (IllegalArgumentException e) {
           output(e.getMessage());

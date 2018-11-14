@@ -34,6 +34,8 @@ public class Account implements UserAccount {
    */
   @Override
   public void buyStock(String ticker, String date, String type, int shares, String portfolio) {
+
+
     boolean exists = false;
 
     Stock stock_bought = new Stock(ticker, date, type, shares);
