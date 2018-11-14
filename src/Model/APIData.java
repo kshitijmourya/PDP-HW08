@@ -112,6 +112,7 @@ public class APIData {
     } catch (Exception e) {
       e.printStackTrace();
       throw new IllegalArgumentException("No Info");
+
     }
     return result;
   }
