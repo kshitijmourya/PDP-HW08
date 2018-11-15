@@ -5,10 +5,10 @@ import org.junit.Test;
 import java.io.Reader;
 import java.io.StringReader;
 
-import Controller.AppController;
-import Model.MockModel;
-import Model.UserAccount;
-import Model.Account;
+import controller.AppController;
+import model.MockModel;
+import model.UserAccount;
+import model.Account;
 
 
 public class AppControllerTest {

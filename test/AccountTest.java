@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import Model.Account;
+import model.Account;
 
 import static org.junit.Assert.*;
 
@@ -29,12 +29,9 @@ public class AccountTest {
   public void testAddStock() {
     testTrade.addPortfolio("Technology");
     testTrade.buyStock("apple", "2018-11-08", "open", 10, "Technology");
-    testTrade.buyStock("amd", "2018-11-08", "open", 10, "Technology");
     testTrade.buyStock("apple", "2018-11-13", "open", 20, "Technology");
-    testTrade.buyStock("microsoft", "2018-11-08", "open", 10, "Technology");
-    testTrade.buyStock("intel", "2018-11-08", "open", 10, "Technology");
 
-    testTrade.viewAccount();
+    System.out.println(testTrade.viewAccount());
   }
 
   @Test (expected = IllegalArgumentException.class)
