@@ -68,8 +68,9 @@ public class AppController implements IAppController {
     UserAccount model = new Account();
 
     Scanner sc = new Scanner(this.in);
-    output("Please Enter the date for trading\n" +
-            "YYYY-MM-DD \n");
+    output("Please Enter the date for trading\n"
+            + "YYYY-MM-DD \n\n"
+            + "Please do not enter dates of holidays as the market is CLOSED on holidays.\n");
     String date = input(sc);
     Scanner date_check = new Scanner(date).useDelimiter("-");
 
@@ -80,10 +81,13 @@ public class AppController implements IAppController {
         throw new IllegalArgumentException("Invalid Date.");
       } else if (count == 0 && check.length() != 4) {
         throw new IllegalArgumentException("Invalid Date.");
-      } else if (count == 1 && (Integer.valueOf(check) < 1 || Integer.valueOf(check) > 12)) {
-        System.out.println(Integer.valueOf(check));
+      } else if (count == 1 && (check.length() != 2
+              || Integer.valueOf(check) < 1
+              || Integer.valueOf(check) > 12)) {
         throw new IllegalArgumentException("Invalid Date.");
-      } else if (count == 2 && (Integer.valueOf(check) < 1|| Integer.valueOf(check) > 31)) {
+      } else if (count == 2 && (check.length() != 2
+              || Integer.valueOf(check) < 1
+              || Integer.valueOf(check) > 31)) {
         throw new IllegalArgumentException("Invalid Date.");
       }
 
