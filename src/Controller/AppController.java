@@ -80,11 +80,13 @@ public class AppController implements IAppController {
         throw new IllegalArgumentException("Invalid Date.");
       } else if (count == 0 && check.length() != 4) {
         throw new IllegalArgumentException("Invalid Date.");
-      } else if (count == 1 && Integer.valueOf(check) < 1|| Integer.valueOf(check) > 12) {
+      } else if (count == 1 && (Integer.valueOf(check) < 1 || Integer.valueOf(check) > 12)) {
+        System.out.println(Integer.valueOf(check));
         throw new IllegalArgumentException("Invalid Date.");
-      } else if (count == 2 && Integer.valueOf(check) < 1|| Integer.valueOf(check) > 31) {
+      } else if (count == 2 && (Integer.valueOf(check) < 1|| Integer.valueOf(check) > 31)) {
         throw new IllegalArgumentException("Invalid Date.");
       }
+
       count++;
     }
 
