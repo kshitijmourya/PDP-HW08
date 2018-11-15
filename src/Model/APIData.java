@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * This class represents a caller to the alphavantage API.
  */
-public class APIData {
+class APIData {
   private Map<String, String> nameToCode;
   private Map<String, Map<String, Map<String, Double>>> prices;
   //  private String apiKey = "SSO4MPHRUSM6YMEB";
@@ -21,7 +21,7 @@ public class APIData {
   /**
    * This constructor will hold the data obtained from the API in a map object.
    */
-  public APIData() {
+  APIData() {
     this.nameToCode = new HashMap<>();
     this.prices = new HashMap<>();
   }
@@ -33,7 +33,7 @@ public class APIData {
    * @param companyName or ticker symbol of the company to be looked up with the API.
    * @return ticker symbol of desired company as a String.
    */
-  public String searchCode(String companyName) {
+  String searchCode(String companyName) {
 
     try {
       url = new URL("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&"
@@ -79,7 +79,7 @@ public class APIData {
    * @throws IllegalArgumentException if the url query does not work or if the ticker symbol did
    *                                  not return any data
    */
-  public Double getPrices(String tickrCode, String date, String type) throws IllegalArgumentException {
+  Double getPrices(String tickrCode, String date, String type) throws IllegalArgumentException {
     try {
       url = new URL("https://www.alphavantage"
               + ".co/query?function=TIME_SERIES_DAILY"

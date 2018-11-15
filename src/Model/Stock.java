@@ -3,7 +3,7 @@ package Model;
 /**
  * This class represents a single stock interest, to be stores in the users portfolio.
  */
-public class Stock {
+class Stock {
   private String ticker;
   private int shares;
   private double cost;

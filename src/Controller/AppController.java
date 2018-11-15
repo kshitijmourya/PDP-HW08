@@ -8,10 +8,19 @@ import Model.Account;
 import Model.UserAccount;
 
 
+/**
+ *
+ */
 public class AppController implements IAppController {
   private final Readable in;
   private final Appendable out;
 
+  /**
+   *
+   * @param scan
+   * @return
+   * @throws IllegalStateException
+   */
   private String input(Scanner scan) throws IllegalStateException {
     String string = "";
     try {
@@ -22,6 +31,11 @@ public class AppController implements IAppController {
     return string;
   }
 
+  /**
+   *
+   * @param st
+   * @throws IllegalStateException
+   */
   private void output(String st) throws IllegalStateException {
     try {
       this.out.append(st);
@@ -30,6 +44,12 @@ public class AppController implements IAppController {
     }
   }
 
+  /**
+   *
+   * @param rd
+   * @param ap
+   * @throws IllegalArgumentException
+   */
   public AppController(Readable rd, Appendable ap) throws IllegalArgumentException {
     if (rd == null || ap == null) {
       throw new IllegalArgumentException("Input and output should not be null.");
@@ -38,6 +58,11 @@ public class AppController implements IAppController {
     this.out = ap;
   }
 
+  /**
+   *
+   * @throws IllegalArgumentException
+   * @throws IllegalStateException
+   */
   public void go() throws IllegalArgumentException, IllegalStateException {
     UserAccount model = new Account();
 
