@@ -1,10 +1,20 @@
 package Model;
 
+/**
+ *
+ */
 public class Stock {
   private String ticker;
   private int shares;
   private double cost;
 
+  /**
+   *
+   * @param companyName
+   * @param date
+   * @param type
+   * @param shares
+   */
   Stock(String companyName, String date, String type, int shares) {
     this.shares = shares;
 
@@ -21,18 +31,34 @@ public class Stock {
     }
   }
 
+  /**
+   *
+   * @return
+   */
   String getTicker() {
     return this.ticker;
   }
 
+  /**
+   *
+   * @return
+   */
   int getShares() {
     return this.shares;
   }
 
+  /**
+   *
+   * @param shares
+   */
   void setShares(int shares) {
     this.shares = shares;
   }
 
+  /**
+   *
+   * @return
+   */
   double getCost() {
     return this.cost;
   }

@@ -34,9 +34,10 @@ public class AccountTest {
     testTrade.buyStock("apple", "2018-11-08", "open", 10, "Technology");
     System.out.println(testTrade.viewAccount());
 
-    testTrade.buyStock("amd", "2018-11-08", "open", 10, "Technology");
+    //testTrade.buyStock("amd", "2018-11-08", "open", 10, "Technology");
     System.out.println(testTrade.viewAccount());
 
+    //testTrade.buyStock("apple", "2018-11-13", "open", 20, "Technology");
 
     System.out.println(testTrade.viewAccount());
     //testTrade.buyStock("microsoft", "2018-11-08", "open", 10, "Technology");
