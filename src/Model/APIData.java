@@ -7,6 +7,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents a caller to the alphavantage API.
+ */
 public class APIData {
   private Map<String, String> nameToCode;
   private Map<String, Map<String, Map<String, Double>>> prices;
@@ -15,11 +18,21 @@ public class APIData {
   private URL url = null;
 
 
+  /**
+   * This constructor will hold the data obtained from the API in a map object.
+   */
   public APIData() {
     this.nameToCode = new HashMap<>();
     this.prices = new HashMap<>();
   }
 
+  /**
+   * This method builds the query URL for the API and obtains the ticker symbol from it. It returns
+   * this ticker symbol as a String.
+   *
+   * @param companyName or ticker symbol of the company to be looked up with the API.
+   * @return ticker symbol of desired company as a String.
+   */
   public String searchCode(String companyName) {
 
     try {
@@ -53,7 +66,19 @@ public class APIData {
     return this.nameToCode.get(companyName);
   }
 
-
+  /**
+   * Gets the prices of a specified stock. It returns 4 different prices for the day and the amount
+   * of shares moved by the company. The 4 different prices are: open, close, high, and low.
+   * The user will be able select which price type to buy the stock at in the future for training
+   * purposes. However, the current version limits the user to buying stock at the opening price.
+   *
+   * @param tickrCode for the company to buy stocks of.
+   * @param date that the stocks will be bought.
+   * @param type of price the user will give to select the price point to buy at.
+   * @return price of a single share of this stock.
+   * @throws IllegalArgumentException if the url query does not work or if the ticker symbol did
+   *                                  not return any data
+   */
   public Double getPrices(String tickrCode, String date, String type) throws IllegalArgumentException {
     try {
       url = new URL("https://www.alphavantage"

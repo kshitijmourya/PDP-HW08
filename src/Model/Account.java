@@ -144,7 +144,7 @@ public class Account implements UserAccount {
    */
   @Override
   public String viewAccount() {
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     Date today = new Date();
 
     if (this.portfolios.isEmpty()) {
@@ -161,7 +161,7 @@ public class Account implements UserAccount {
 
               APIData stock_data = new APIData();
               String code = stock_data.searchCode(s.getTicker());
-              double price = stock_data.getPrices(code, formatter.format(today), "low");
+              double price = stock_data.getPrices(code, formatter.format(today), "open");
               double value = price * s.getShares();
               total_costs += s.getCost();
               total_value += value;
