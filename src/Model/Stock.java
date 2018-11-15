@@ -10,7 +10,6 @@ public class Stock {
 
     APIData stock_data = new APIData();
     String code = stock_data.searchCode(companyName);
-    System.out.println(code);
     double price = stock_data.getPrices(code, date, type);
 
     this.ticker = code;
@@ -44,9 +43,10 @@ public class Stock {
 
   @Override
   public String toString() {
-    String stock_information = this.ticker
-            + "\n" + this.shares
-            + "\n" + this.cost;
+    String stock_information =
+            "Ticker Symbol: " + this.ticker
+            + "\n" + "Total Shares Owned: " + this.shares
+            + "\n" + "Total Running Cost of Stock: " + this.cost + "\n";
 
     return stock_information;
   }

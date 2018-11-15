@@ -104,11 +104,11 @@ public class AppController implements IAppController {
         case "3":
           output("Showing Account Details\n" +
                   "Please Enter: 1) For all portfolios \n" +
-                  "2) for specific stock \n" +
+                  "2) for specific portfolio \n" +
                   "3) for specific stock in specific portfolio\n");
           String option = input(sc);
           try {
-            model.viewAccount(option);
+            model.viewAccount();
           } catch (IllegalArgumentException e) {
             output(e.getMessage());
           }

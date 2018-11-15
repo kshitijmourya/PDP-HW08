@@ -3,12 +3,18 @@ package Model;
 public interface UserAccount {
 
   /**
-   * Adds a portfolio to the users account.
+   * Adds a portfolio to the users account. The initial portfolio is clear, with no stocks held
+   * within it. To add stocks to the portfolio, the user must add them in one by one with the
+   * buyStock() method.
+   *
+   * @param portfolioName string that will be used as the label for the portfolio. The user will
+   *                      use this name to call the portfolio in other methods.
    */
   void addPortfolio(String portfolioName);
 
   /**
-   * Removes a portfolio from a users account.
+   * Removes a portfolio from a users account. All data in the portfolio will be lost. The user
+   * will not have access to the stocks stored in this portfolio after removal.
    */
   void removePortfolio(String portfolioName);
 
@@ -36,5 +42,5 @@ public interface UserAccount {
    *
    * @return String paragraph of user account information.
    */
-  String viewAccount(String option);
+  String viewAccount();
 }
