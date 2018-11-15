@@ -34,8 +34,9 @@ public class AppController implements IAppController {
 
   /**
    * Builds the output message that is supplied to the user.
-   * @param st string that is being supplied to the method, one at a time to build
-   * @throws IllegalStateException
+   *
+   * @param st string that is being supplied to the method, one at a time to build output message.
+   * @throws IllegalStateException if the operation is interrupted.
    */
   private void output(String st) throws IllegalStateException {
     try {
@@ -60,6 +61,8 @@ public class AppController implements IAppController {
   }
 
   /**
+   * It asks user for date, time, then it asks user for various inputs which directs the input
+   * to the appropriate model methods. Shows the output reulsts to the user.
    *
    * @throws IllegalArgumentException
    * @throws IllegalStateException

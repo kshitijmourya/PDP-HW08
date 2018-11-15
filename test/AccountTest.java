@@ -28,20 +28,13 @@ public class AccountTest {
   @Test
   public void testAddStock() {
     testTrade.addPortfolio("Technology");
-
-    System.out.println(testTrade.viewAccount());
-
     testTrade.buyStock("apple", "2018-11-08", "open", 10, "Technology");
-    System.out.println(testTrade.viewAccount());
-
     testTrade.buyStock("amd", "2018-11-08", "open", 10, "Technology");
-    System.out.println(testTrade.viewAccount());
-
     testTrade.buyStock("apple", "2018-11-13", "open", 20, "Technology");
-
-    System.out.println(testTrade.viewAccount());
     testTrade.buyStock("microsoft", "2018-11-08", "open", 10, "Technology");
     testTrade.buyStock("intel", "2018-11-08", "open", 10, "Technology");
+
+    testTrade.viewAccount();
   }
 
   @Test (expected = IllegalArgumentException.class)
