@@ -14,7 +14,9 @@ public interface UserAccount {
 
   /**
    * Removes a portfolio from a users account. All data in the portfolio will be lost. The user
-   * will not have access to the stocks stored in this portfolio after removal.
+   * will not have access to the stocks stored in this portfolio after removal. In the next version
+   * update, we plan to include a feature to move stock from one portfolio to another and another
+   * feature to automatically sell the stocks in the portfolio before removal. This will
    */
   void removePortfolio(String portfolioName);
 
